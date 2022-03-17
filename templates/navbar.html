@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>    
+</head>
+<body>
+
+    <nav class="nav">
+        <h2 class="logo"><a href="{% url 'book:index'%}">WB</a></h2>
+
+        <div class="nav-profile">
+            <div class="nav-image" onclick="Togglemenu()">
+                <img src="{{request.user.profile_image.url}}" alt="">
+            </div>
+    
+            <div class="nav-menu none">
+                <ul>
+                    <li><a href="#">로그아웃</a></li>
+                    <li><a href="{% url 'common:userEdit' request.user.id%}">프로필 설정</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>

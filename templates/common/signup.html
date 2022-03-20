@@ -11,6 +11,40 @@
 </head>
 <body>
 
+    <div class="signup-box">
+        <div class="title-logo">
+            Write Book
+        </div>
+        <p class="subtitle-logo">
+            Write Book과 함께 나만의 책을 만들어 보세요.
+        </p>
+
+        <div class="other-login">
+            <a href="#" class="social-naver"> Naver로 로그인</a>
+        </div>
+
+        <div class="divide"></div>
+        <div class="signup-infobox">
+            <form action="#" method="post" class="signup-form">
+                {% csrf_token %}
+                <div class="input-section">
+                    <input type="email" class="email" name="email" required placeholder="이메일">
+                    <input type="text" class="username" name="username" required placeholder="이름">
+                    <input type="text" class="nickname" name="nickname" required placeholder="닉네임">
+                    <input type="password" class="password" name="password" required placeholder="비밀번호">
+                </div>
+                <div class="btn-section">
+                    <input type="submit" value="로그인">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="ask-login">
+        <span class="check-loginask">계정이 있으신가요?</span>
+        <a href="{% url 'common:login'%}">로그인</a>
+    </div>
+
     <script src="{% static 'js/helper.js' %}"></script>
     <script src="{% static 'js/signup.js'%}"></script>
 </body>

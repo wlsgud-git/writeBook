@@ -10,6 +10,36 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div class="login-box">
+        <div class="title-logo">
+            Write Book
+        </div>
+        <div class="login-infobox">
+            <form action="#" method="post" class="login-form">
+                {% csrf_token %}
+                <div class="input-section">
+                    <input type="email" class="email" name="email" required placeholder="이메일">
+                    <input type="password" class="password" name="password" required placeholder="비밀번호">
+                </div>
+                <div class="btn-section">
+                    <input type="submit" value="로그인">
+                </div>
+            </form>
+        </div>
+        <div class="divide"></div>
+        <div class="other-login">
+            <a href="#" class="social-naver"> Naver로 로그인</a>
+        </div>
+        <div class="forget-password">
+            <a href="#">비밀번호를 잊으셨나요?</a>
+        </div>
+    </div>
+
+    <div class="ask-signup">
+        <span class="check-signupask">계정이 없으신가요?</span>
+        <a href="{% url 'common:signup'%}">회원가입</a>
+    </div>
     
     <script src="{% static 'js/helper.js' %}"></script>
     <script src="{% static 'js/login.js' %}"></script>

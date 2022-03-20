@@ -1,0 +1,129 @@
+@import url('style.css');
+
+body{
+    display: flex;
+    height: 118vh;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.03);
+}
+
+.signup-box{
+    width: 20rem;
+    height: 64%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 0 auto;
+    align-items: center;
+    border: 0.2px solid rgba(0,0,0,0.2);
+}
+
+.title-logo{
+    font-size: 26px;
+    margin-top: 1rem;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.subtitle-logo{
+    color: rgba(0,0,0,0.5);
+    margin-top: 1rem;
+    font-size: 16px;
+    text-align: center;
+    width: 79%;
+    font-weight: 600;
+}
+
+.other-login{
+    width: 77%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.social-naver{
+    width: 100%;
+    text-align: center;
+    padding: 0.3rem;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px;
+    background-color: #41d42d;
+    text-decoration: none;
+}
+
+.social-naver:hover{
+    background-color: #4cca3b;
+}
+
+.divide{
+    margin-top: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    width: 76%;
+}
+
+.signup-infobox{
+    width: 77%;
+    margin-top: 1.5rem;
+}
+
+.signup-form .input-section input{
+    width: 100%;
+    padding: 0.5rem 0.3rem;
+    outline: none;
+    font-size: 12px;
+    margin-bottom: 0.4rem;
+}
+
+.btn-section{
+    margin-top: 0.4rem;
+}
+
+.btn-section input{
+    width: 100%;
+    background-color: #0095f6;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 0rem;
+    font-weight: 600;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+.signup-form .input-section input:focus{
+    border: 2px solid var(--blue);
+}
+
+.btn-section input:hover{
+    background-color: var(--blue);
+}
+
+.ask-login{
+    border: 0.1px solid rgba(0,0,0,0.2);
+    width: 20rem;
+    margin: 0 auto;
+    margin-top: 1.8rem;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.ask-login span{
+    margin-right: 0.3rem;
+}
+
+.ask-login a{
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.ask-login a:hover{
+    text-decoration: underline;
+}
+

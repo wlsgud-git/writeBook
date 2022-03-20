@@ -1,4 +1,5 @@
-from ..serializers import UserSerializer
+from itsdangerous import Serializer
+from ..serializers import ResisterSerializer, UserSerializer
 from ..models import Users
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -25,14 +26,22 @@ class UserDetail(APIView):
     
     def put(self, request, pk, format=None):
         user = self.get_object(pk)
-        serializer = UserSerializer(Users, data = request.data)
+        serializer = UserSerializer(user, data = request.data)
 
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, format=None):
         user = self.get_object(pk)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ResisterApi(APIView):
+    def post(self, request, format = None):
+        serializer = ResisterSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

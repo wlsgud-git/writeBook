@@ -4,7 +4,7 @@ const Username = document.querySelector('.username');
 const Nickname =  document.querySelector('.nickname')
 const Password =  document.querySelector('.password')
 
-console.log('fetch some')
+console.log('fatch as l')
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault()
@@ -28,7 +28,7 @@ async function Postsignup(email, username, nickname, password){
         }
     })
     const data = await res.json()
-    console.log(data)
+    console.log(data, "fuck that")
 }
 
 function init(){

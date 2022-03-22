@@ -1,5 +1,5 @@
 from itsdangerous import Serializer
-from ..serializers import ResisterSerializer, UserSerializer
+from ..serializers import *
 from ..models import Users
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -40,8 +40,8 @@ class UserDetail(APIView):
 
 class ResisterApi(APIView):
     def post(self, request, format = None):
-        serializer = ResisterSerializer(data=request.data)
+        serializer = ResisterSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status': 200})
+        return Response({'status': 400})

@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from ntpath import join
-import os, json
+import os, json,datetime
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
@@ -52,7 +52,24 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'book.apps.BookConfig',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+# DRF
+REST_FRAMEWORK = {
+    
+}
+
+REST_USE_JWT = True
+
+# JWT toekn
+JWT_AUTH = {
+    'JWT_SECRET_KEY': get_secret('SECRET_KEY'),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,6 +83,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'writeBook.urls'
 
+# Template
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -82,6 +100,7 @@ TEMPLATES = [
     },
 ]
 
+# Wsgi asgi
 WSGI_APPLICATION = 'writeBook.wsgi.application'
 
 
@@ -89,7 +108,6 @@ WSGI_APPLICATION = 'writeBook.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = get_secret("DATABASE")
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -112,26 +130,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en'
-
 TIME_ZONE = 'Asia/Seoul'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
+# Media files
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Default_auto-fiel
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

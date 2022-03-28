@@ -13,6 +13,27 @@
     {% include 'infomations.html'%}
     {% include 'navbar.html' %}
 
+    <div class="home-page">
+
+        <div class="chore-section">
+            <form action="#" method="post" class="book-search-form">
+                {% csrf_token%}
+                <input type="text" name="search-book" class="serach-book">
+                <button class="book-serach-btn">검</button>
+            </form>
+        </div>
+
+        <div class="main-section">
+            <div class="book-info">
+                {% for book in books %}
+                    <a href="{% url 'book:Detail'%}?id={{book.id}}">{{book.title}}</a>
+                {% endfor %}
+            </div>
+            <div class="side-info"></div>
+        </div>
+
+    </div>
+
     <script src="{% static 'js/helper.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
 </body>

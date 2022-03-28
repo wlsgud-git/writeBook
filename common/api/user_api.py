@@ -13,19 +13,21 @@ class UserList(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class UserDetail(APIView):
-    def get_object(self, pk):
+    def get_object(self, user):
         try:
-            return Users.objects.get(pk=pk)
+            return Users.objects.get(email = user)
         except Users.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk, format=None):
-        user = self.get_object(pk)
+    def get(self, request, format=None):
+        param = request.GET.get('u')
+        user = self.get_object(param)
         serializer = UserSerializer(user)
         return Response(serializer.data, status= status.HTTP_200_OK)
     
-    def put(self, request, pk, format=None):
-        user = self.get_object(pk)
+    def put(self, request, format=None):
+        param = request.GET.get('u')
+        user = self.get_object(param)
         serializer = UserSerializer(user, data = request.data)
 
         if serializer.is_valid():
@@ -33,15 +35,8 @@ class UserDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, pk, format=None):
-        user = self.get_object(pk)
+    def delete(self, request, format=None):
+        param = request.GET.get('u')
+        user = self.get_object(param)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-class ResisterApi(APIView):
-    def post(self, request, format = None):
-        serializer = ResisterSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'status': 200})
-        return Response({'status': 400})

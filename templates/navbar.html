@@ -11,7 +11,7 @@
 <body>
 
     <nav class="nav">
-        <h2 class="logo"><a href="{% url 'book:index'%}">WB</a></h2>
+        <h2 class="logo"><a href="#">WB</a></h2>
 
         <div class="nav-profile">
             <div class="nav-image" onclick="Togglemenu()">
@@ -20,8 +20,9 @@
     
             <div class="nav-menu none">
                 <ul>
+                    <li><a href="#">내 책장</a></li>
                     <li><a href="#">로그아웃</a></li>
-                    <li><a href="{% url 'common:userEdit' request.user.id%}">프로필 설정</a></li>
+                    <li><a href="{% url 'common:userEdit'%}?u={{request.user.email}}">프로필 설정</a></li>
                 </ul>
             </div>
         </div>

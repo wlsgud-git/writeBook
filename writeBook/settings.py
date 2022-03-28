@@ -43,6 +43,7 @@ AUTH_USER_MODEL = 'common.Users'
 # Application definition
 
 INSTALLED_APPS = [
+    # App
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,24 +52,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common.apps.CommonConfig',
     'book.apps.BookConfig',
+    # DRF
     'rest_framework',
-    'rest_framework.authtoken',
 ]
 
 # DRF
 REST_FRAMEWORK = {
-    
-}
 
-REST_USE_JWT = True
+}
 
 # JWT toekn
 JWT_AUTH = {
-    'JWT_SECRET_KEY': get_secret('SECRET_KEY'),
-    'JWT_ALLOW_REFRESH': True,
+    'JWT_SECRET_KEY': get_secret("SECRET_KEY"),
     'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
 }
 
 MIDDLEWARE = [

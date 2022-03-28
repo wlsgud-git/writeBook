@@ -11,28 +11,21 @@ class BookList(APIView):
         serializers = BookSerializer(books, many=True)
         return Response(serializers.data, status=status.HTTP_200_OK)
     
-class BookDetail(APIView):
-    def get_object(self, pk):
-        try:
-            return Books.objects.get(pk=pk)
-        except Books.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        book = self.get_object(pk)
-        serializer = BookSerializer(book)
-        return Response(serializer.data, status= status.HTTP_200_OK)
-    
-    def put(self, request, pk, format=None):
-        book = self.get_object(pk)
-        serializer = BookSerializer(Books, data = request.data)
+    def post(self, request, format = None):
+        serializer = BookSerializer(data = request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
-    
-    def delete(self, request, pk, format=None):
-        book = self.get_object(pk)
-        book.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response({
+                'status': 200,
+                "data": serializer.data
+            })
+        return Response({'status':400, 'data':"no response error"})
+
+class BookDetail(APIView):
+    def get(self, request, format = None):
+        param = request.GET.get('id')
+        book = Books.objects.get(id = param)
+        serializer = BookSerializer(book) 
+        return Response({"status": 200, "data": serializer.data})
+

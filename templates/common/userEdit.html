@@ -31,7 +31,7 @@
                 </form>
             </div>
 
-            <form class="user-infomations" method="post" action="#">
+            <form class="user-infomations" method="post" action="{% url 'common:userEdit'%}?u={{request.user.email}}">
                 {% csrf_token %}
                 <div class="profile-edit">
                     <label for="username">이름</label>

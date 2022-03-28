@@ -4,7 +4,7 @@ const Username = document.querySelector('.username');
 const Nickname =  document.querySelector('.nickname')
 const Password =  document.querySelector('.password')
 
-console.log('fatch as l')
+console.log('fatch as')
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault()

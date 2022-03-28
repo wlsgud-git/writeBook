@@ -1,31 +1,30 @@
 // 사용 셀렉터
+const url = new URL(window.location.href)
+const user = url.searchParams.get('u')
 let profileUsername = document.querySelector('.username-input')
 let profileNickname = document.querySelector('.nickname-input')
 let profileEmail = document.querySelector('.email-input')
 let profileImage = document.querySelector('.img-box')
-const userId = parseInt(document.querySelector('.userId').innerText)
 const form = document.querySelector('.user-infomations')
 //check
 console.log('check1')
 const ru = []
 // 유저 정보 획득
 async function getUser(){
-    const res = await fetch(`/common/user/${userId}/api/`)
+    const res = await fetch(`/common/user/detail/api/?u=${user}`)
     const data = await res.json()
     ru[0] = data
     paintInput(data.username , data.nickname, data.email)
-    paintImg(data.profile_image)
 }
 //유저 정보 변경
 async function ChangeUserInfo(){
     let info = {
-        'id': userId,
         'username': profileUsername.value,
         'nickname': profileNickname.value,
         'email': profileEmail.value,
     }
 
-    const res = await fetch(`/common/user/${userId}/api/`, {
+    const res = await fetch(`/common/user/detail/api/?u=${user}`, {
         method: "put",
         body: JSON.stringify(info),
         headers:{
@@ -47,12 +46,6 @@ function paintInput(username, nickname, email){
         profileNickname.value = nickname
         profileEmail.value = email  
     },1000)  
-}
-//유저 프로필 이미지 표시
-function paintImg(img){
-    setTimeout(()=>{
-        profileImage.innerHTML = `<img src="${img}" alt="${img}">`
-    },1000)
 }
 
 function init(){

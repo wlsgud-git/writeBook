@@ -21,5 +21,24 @@ function Togglemenu(){
     userMenu.classList.toggle('none')
 }
 
+//count 세기 함수
+function CountReduce(count){
+    var s = count.toString()
+    if(count < 1000){return count}
+
+    if(count >= 1000 && count < 10000){
+        return s[0] + "." + s[1] +"천"
+    }
+    else if(count >= 10000 && count < 100000){
+        return `${s[0]}.${s[1]}만`
+    }
+    else if(count >= 100000 && count < 1000000){
+        return `${s[0]}${s[1]}만`
+    }
+    else if(count >= 1000000 && count < 10000000){
+        return `${s[0]}${s[1]}${s[2]}만`
+    }
+}
+
 // use_variable
 const csrftoken = getCookie('csrftoken');

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-def userEdit(request, pk):
+def userEdit(request):
     return render(request, 'common/userEdit.html')
 
 def pwFind(request, pk):

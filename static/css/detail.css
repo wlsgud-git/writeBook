@@ -1,0 +1,40 @@
+@import url('style.css');
+.content-page{
+    width: 93%;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid red;
+    margin-top: 1.6rem;
+    margin-bottom: 5rem;
+}
+
+.book-content{
+    /* border: 1px solid black; */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title{
+    font-size: 18px;
+}
+
+.book-info-section{
+    padding: 0.3rem 0rem;
+    border-bottom: 0.7px solid var(--blue);
+}
+
+.book-content-section{
+    padding: 0.2rem 0rem;
+    border-bottom: 0.7px solid var(--blue);
+    min-height: 25rem;
+}
+
+.comment-section{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 100%;
+}

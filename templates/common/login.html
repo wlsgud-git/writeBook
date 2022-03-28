@@ -16,7 +16,7 @@
             Write Book
         </div>
         <div class="login-infobox">
-            <form action="#" method="post" class="login-form">
+            <form action="{% url 'common:login' %}" method="post" class="login-form">
                 {% csrf_token %}
                 <div class="input-section">
                     <input type="email" class="email" name="email" required placeholder="이메일">

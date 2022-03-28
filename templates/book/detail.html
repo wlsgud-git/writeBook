@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/detail.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="content-page">
+    <section class="book-content">
+        <div class="book-info-section">
+            <span class="title"></span>
+            <div class="book-side-info">
+                <span class="author-nickname"></span>
+                <span class="watch-count"></span>
+                <span class="create_date"></span>
+            </div>
+        </div>
+
+        <div class="book-content-section">
+
+        </div>
+    </section>
+
+    <section class="comment-section">
+        <div class="comment-info">
+            <span class="comments-count"></span>
+
+        </div>
+        <div class="comment-write"></div>
+
+        <div class="all-comment"></div>
+    </section>
+    </div>
+
+
+
+    <script src="{% static 'js/helper.js'%}"></script>
+    <script src="{% static 'js/detail.js'%}"></script>
+</body>
+</html>

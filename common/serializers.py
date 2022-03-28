@@ -5,31 +5,21 @@ from .models import Users
 from rest_framework.validators import UniqueValidator
 from django.core.validators  import validate_email
 from django.core.exceptions  import ValidationError
+from django.contrib import auth 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ['id','username', 'nickname', 'email']
+        fields = ['username', 'nickname', 'email']
 
 class ResisterSerializer(serializers.ModelSerializer):
-    # email = serializers.EmailField(
-    #     required = True, 
-    #     validators=[UniqueValidator(queryset=Users.objects.all())]
-    # )
+    email = serializers.EmailField(max_length= 200, validators=[UniqueValidator(queryset=Users.objects.all())])
+    password = serializers.CharField(max_length = 30, write_only= True)
 
     class Meta:
         model = Users
         fields = ['username', 'nickname','email', 'password']
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }   
-    def validate_email(self, value):
-        try:
-            validate_email(value)
-            return True
-        except ValidationError:
-            return False
-     
+
     def create(self, validated_data):
         user = Users.objects.create(
             username = validated_data['username'],
@@ -39,4 +29,22 @@ class ResisterSerializer(serializers.ModelSerializer):
 
         user.set_password(validated_data['password'])
         user.save()
+        return user
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.CharField(max_length=64)
+    password = serializers.CharField(max_length=128, write_only=True)
+    
+    def validate(self, data):
+        email = data.get('email', None)
+        password = data.get('password', None)
+
+        user = auth.authenticate(email = email, password = password)
+
+        if user is None:
+            return False
+        
+        
+
+
         return user

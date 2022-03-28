@@ -1,6 +1,62 @@
 @import url('style.css');
 
-.content{
+.home-page{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    min-height: 20rem;
+    margin-bottom: 3rem;
+}
+
+.chore-section{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.book-search-form{
+    border: 0.4px solid rgba(0,0,0,0.6);
+    width: 18rem;
+    display: flex;
+}
+
+.book-search-form input{
+    flex: 1;
+    height: 100%;
+    padding: 0.4rem 0.4rem;    
+    border: none;
+    outline: none;
+}
+
+.book-search-form button{
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.book-search-form button:hover{
+    background-color: rgba(0,0,0,0.09);
+}
+
+.main-section{
+    margin-top: 2rem;
+    min-height: 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-info{
+    width: 50rem;
     border: 1px solid red;
-    height: 1000px;
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-info{
+    width: 15rem;
+    border: 1px solid blue;
+    height: 40rem;
 }

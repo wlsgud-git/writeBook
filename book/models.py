@@ -12,6 +12,7 @@ class Books(models.Model):
     create_date = models.DateField()
 
     like_book = models.ManyToManyField(Users, related_name='book_like', blank=True)
+    views_count = models.PositiveBigIntegerField(default=0)
 
 class Comments(models.Model):
     author = models.ForeignKey(Users, on_delete=models.CASCADE)

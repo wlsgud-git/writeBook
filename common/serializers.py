@@ -6,6 +6,11 @@ from rest_framework.validators import UniqueValidator
 from django.core.validators  import validate_email
 from django.core.exceptions  import ValidationError
 from django.contrib import auth 
+from rest_framework_jwt.settings import api_settings
+
+# JWT 사용을 위한 설정
+JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER
+JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,8 +48,14 @@ class UserLoginSerializer(serializers.Serializer):
 
         if user is None:
             return False
-        
-        
-
-
-        return user
+        try:
+            payload = JWT_PAYLOAD_HANDLER(user)
+            jwt_token = JWT_ENCODE_HANDLER(payload)
+        except Users.DoesNotExist:
+            raise serializers.ValidationError(
+                'user is fuck that'
+            )
+        return{
+            'user':user,
+            'token': jwt_token
+        }

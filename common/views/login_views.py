@@ -1,9 +1,12 @@
+from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from common.models import Users
 from django.contrib import auth
-from rest_framework.authtoken.models import Token
+from django.contrib.auth.decorators import login_required
+
 
 def login(request):
+    print(request.COOKIES)
     return render(request, 'common/login.html')  
 
 def logout(request):

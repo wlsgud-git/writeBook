@@ -3,7 +3,7 @@ const LoginForm = document.querySelector('.login-form')
 const Email = document.querySelector('.email')
 const Password = document.querySelector('.password')
 // check reset
-console.log('fe')
+console.log('oner')
 
 async function GetLoginInfo(email, password){
     let loginfo = {

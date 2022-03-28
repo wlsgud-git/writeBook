@@ -7,12 +7,13 @@ let profileEmail = document.querySelector('.email-input')
 let profileImage = document.querySelector('.img-box')
 const form = document.querySelector('.user-infomations')
 //check
-console.log('check1')
+console.log('check2')
 const ru = []
 // 유저 정보 획득
 async function getUser(){
     const res = await fetch(`/common/user/detail/api/?u=${user}`)
     const data = await res.json()
+    console.log(data)
     ru[0] = data
     paintInput(data.username , data.nickname, data.email)
 }

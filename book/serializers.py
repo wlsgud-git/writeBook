@@ -7,7 +7,7 @@ from .models import *
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Books
-        fields = ['id','author', 'title', 'content', 'create_date', 'views_count']
+        fields = ['id','author', 'title', 'content', 'create_date', 'views_count', 'create_day_of_week', 'thumbnail']
 
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:

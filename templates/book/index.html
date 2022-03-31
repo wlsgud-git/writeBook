@@ -9,30 +9,40 @@
     <title>Document</title>
 </head>
 <body>
-    
-    {% include 'infomations.html'%}
+
     {% include 'navbar.html' %}
 
-    <div class="home-page">
+    <div class="index-page">
+        <div class="slide-contents">
 
-        <div class="chore-section">
-            <form action="#" method="post" class="book-search-form">
-                {% csrf_token%}
-                <input type="text" name="search-book" class="serach-book">
-                <button class="book-serach-btn">검</button>
-            </form>
+            <ul class="content-list">
+
+            </ul>
+
+            <button class="slide-left"> < </button>
+            <button class="slide-right"> > </button>
         </div>
 
-        <div class="main-section">
-            <div class="book-info">
-                {% for book in books %}
-                    <a href="{% url 'book:Detail'%}?id={{book.id}}">{{book.title}}</a>
-                {% endfor %}
+        <main class="book-section">
+            <div class="day_of_book-list">
+                <ul class="week"> 
+                    <li class=""><a href="{% url 'book:index' %}?day=mon" class="days" id="mon">월</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=tue" class="days" id="tue">화</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=wed" class="days" id="wed">수</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=thu" class="days" id="thu">목</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=fri" class="days" id="fri">금</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=sat" class="days" id="sat">토</a></li>
+                    <li class=""><a href="{% url 'book:index' %}?day=sun" class="days" id="sun">일</a></li>
+                </ul>
             </div>
-            <div class="side-info"></div>
-        </div>
+
+            <div class="most-list-book">
+
+            </div>
+        </main>
 
     </div>
+
 
     <script src="{% static 'js/helper.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>

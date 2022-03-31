@@ -21,6 +21,14 @@ function Togglemenu(){
     userMenu.classList.toggle('none')
 }
 
+//요일 받아오는 함수
+function getToday(){
+    let week = ['sun','mon','tue','wed','thu','fri','sat']
+    let now = new Date()
+    let Today = week[now.getDay()]
+    return Today
+}
+
 //count 세기 함수
 function CountReduce(count){
     var s = count.toString()
@@ -42,3 +50,4 @@ function CountReduce(count){
 
 // use_variable
 const csrftoken = getCookie('csrftoken');
+const getDateCount = CountReduce(1000)

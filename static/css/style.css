@@ -15,17 +15,16 @@
     --cover-gray: #f9fafb;
     --lblue: #0095f6;
 }
+/* 기본 navbar */
 
 .nav{
-    position: sticky;
-    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.6rem 0.7rem;
     background-color: #fff;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    border-bottom: 1.8px solid gray;
 }
 
 .logo a{
@@ -89,4 +88,31 @@
     width: 100%;
     text-decoration: none;
     color: black;
+}
+
+
+/* 책 관련 navbar */
+.book-info-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.book-info-nav li{
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    border: 0.3px solid gray;
+}
+
+.book-info-nav li a{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: inline-block;
+    padding: 0.3rem 0rem;
+}
+.book-info-nav li a:hover{
+    color: rgb(196, 78, 78);;
 }

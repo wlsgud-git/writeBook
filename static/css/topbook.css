@@ -1,0 +1,11 @@
+@import url('style.css');
+
+.topbook_list{
+    width: 90%;
+    min-height: 30rem;
+    border: 1px solid red;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.4rem;
+}

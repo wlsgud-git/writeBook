@@ -6,34 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <title>Document</title>    
 </head>
 <body>
 
-    <nav class="nav">
-        <h2 class="logo"><a href="{% url 'book:index'%}">WB</a></h2>
+    <nav class="nav">    
+        <div class="nav-first">
 
-        <div class="nav-profile">
-            <div class="nav-image" onclick="Togglemenu()">
-                user
-                <!-- <img src="{{request.user.profile_image.url}}" alt=""> -->
+            <span class="logo"><a href="{% url 'book:index'%}"> WB <i class="fa fa-book"></i> </a></span>
+
+            <div class="book-search-section">
+                <form action="{% url 'book:index' %}" method="get" class="book-search-form">
+                    <input type="text" name="search-value" placeholder="책 제목 검색">
+                    <button class="search-btn"><i class="fa fa-search"></i></button>
+                </form>
             </div>
-    
-            <div class="nav-menu none">
-                <ul>
-                    <li><a href="#">내 책장</a></li>
-                    <li><a href="#">로그아웃</a></li>
-                    <li><a href="#">프로필 설정</a></li>
+
+            <div class="user-info-section">
+                <button class="user-profile">
+                    <i class="fa fa-user"></i>
+                </button>
+
+                <ul class="options">
+                    <li><a href="#"><i class="fa fa-power-off"></i> 로그아웃 </a></li>
+                    <li><a href="{% url 'common:library' request.user.email %}"><i class="fa fa-bookmark"></i> 내 서재</a></li>
+                    <li><a href="{% url 'common:userEdit' request.user.email %}"><i class="fa fa-user"></i> 프로필 설정</a> </li>
                 </ul>
             </div>
         </div>
+
+        <ul class="nav-second">
+            <li class="ing-book"><a href="{% url 'book:index'%}">연재</a></li>
+            <li><a href="{% url 'book:ending' %}">완결</a></li>
+            <li><a href="{% url 'book:topbook'%}">Top 100</a></li>
+        </ul>
+
     </nav>
-
-    <ul class="book-info-nav">
-        <li class="ing-book"><a href="{% url 'book:index' %}">연재</a></li>
-        <li class="end-book"><a href="{% url 'book:ending' %}">완결</a></li>
-        <li class="top-book"><a href="{% url 'book:topbook' %}">Top 100</a></li>
-    </ul>
-
 </body>
 </html>

@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 
-
 # 모든 책 리스트
 class BookList(APIView):
     def get(self, request, format = None):
@@ -36,12 +35,16 @@ class DayOfBook(APIView):
 # 완결난 책
 class EndBookList(APIView):
     def get(self, request, format = None):
-        books = Books.objects.filter(making = False)
+        books = Books.objects.filter(making = False).order_by("-id")[:3]
         books_serializer = BookSerializer(books, many=True)
         return Response(books_serializer.data)
 
 # 인기 많은 책 100개
-# class TopBookList(APIView):
+class TopBookList(APIView):
+    def get(self, request, format = None):
+        topbook = Books.objects.filter(making=  True).order_by('like_book')[:100]
+        topbook_serializer = BookSerializer(topbook, many= True)
+        return Response(topbook_serializer.data)
 
 # 한개의 책 정보
 class BookDetail(APIView):
@@ -51,3 +54,9 @@ class BookDetail(APIView):
         serializer = BookSerializer(book) 
         return Response({"status": 200, "data": serializer.data})
 
+# 역대 인기순 책
+class AllTimeBestBook(APIView):
+    def get(self, request, format = None):
+        all_time_best_book = Books.objects.order_by('like_book')[:10]
+        serializer = BookSerializer(all_time_best_book)
+        return Response({"status": 200, 'data': serializer.data})

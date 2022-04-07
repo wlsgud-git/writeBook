@@ -1,6 +1,5 @@
 // 사용 셀렉터
-const url = new URL(window.location.href)
-const user = url.searchParams.get('u')
+const url = new URL(window.location)
 let profileUsername = document.querySelector('.username-input')
 let profileNickname = document.querySelector('.nickname-input')
 let profileEmail = document.querySelector('.email-input')
@@ -11,9 +10,8 @@ console.log('check2')
 const ru = []
 // 유저 정보 획득
 async function getUser(){
-    const res = await fetch(`/common/user/detail/api/?u=${user}`)
+    const res = await fetch(`${url.pathname}api/`)
     const data = await res.json()
-    console.log(data)
     ru[0] = data
     paintInput(data.username , data.nickname, data.email)
 }
@@ -25,7 +23,7 @@ async function ChangeUserInfo(){
         'email': profileEmail.value,
     }
 
-    const res = await fetch(`/common/user/detail/api/?u=${user}`, {
+    const res = await fetch(`${url.pathname}api/`, {
         method: "put",
         body: JSON.stringify(info),
         headers:{

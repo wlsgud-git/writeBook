@@ -44,6 +44,7 @@ AUTH_USER_MODEL = 'common.Users'
 
 INSTALLED_APPS = [
     # App
+    'fontawesomefree',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,5 +1,22 @@
-// selector
+//use selector
 const userMenu = document.querySelector('.nav-menu')
+const Profile = document.querySelector('.user-profile')
+const Options = document.querySelector('.options')
+const MyProfile = document.querySelector('.user-profile')
+const Menu = document.querySelector('.options')
+// check section
+console.log('haha')
+
+MyProfile.addEventListener('click', ()=>{
+    Menu.style.display = "block"
+})
+
+MyProfile.addEventListener('focusout',(e)=>{
+    Menu.style.display = ""
+})
+
+// menu 열었다 닫기
+
 //쿠키 함수
 function getCookie(name) {
     let cookieValue = null;

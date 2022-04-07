@@ -15,104 +15,148 @@
     --cover-gray: #f9fafb;
     --lblue: #0095f6;
 }
-/* 기본 navbar */
 
+/* 기본 navbar */
 .nav{
+    position: static;
     width: 100%;
+}
+
+/* 1번째 nav 부분 */
+.nav-first{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.6rem 0.7rem;
-    background-color: #fff;
-    border-bottom: 1.8px solid gray;
+    padding: 12px 8px;
+    border-bottom: 1.5px solid rgba(0,0,0,0.3);
 }
 
+/* 로고 부분 */
 .logo a{
     text-decoration: none;
-    color: #000;
+    color: black;
+    /* border: 1px solid black; */
+    padding: 0.4rem 0.3rem;
+    font-size: 22px;
+    font-weight: 600;
 }
 
-.nav-profile{
-    position: relative;
+.logo i{
+    color: red;
+}
+
+/* 검색 부분 */
+
+.book-search-section{
+    width: 34%;
+}
+
+.book-search-form{
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
 }
 
-.nav-image{
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.book-search-form input{
+    flex: 1;
+    padding: 0.6rem 0.4rem;
+    border: 0.6px solid rgba(0,0,0,0.5);
+    outline: none;
+}
+
+.book-search-form input:focus{
+    border-color: var(--hblue);
+}
+
+.book-search-form button{
+    padding: 0rem 0.8rem;
+    background-color: inherit;
+    border: 0.6px solid rgba(0,0,0,0.5);
+    border-left: 0px solid #fff;
+    font-size: 18px;
+    color: rgba(0,0,0,0.5);
     cursor: pointer;
 }
 
-.nav-image img{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.nav-menu{
-    position: absolute;
-    top: 2.3rem;
-    border: 1px solid rgba(0,0,0,0.2);
-    right: 0.5rem;
-    width: 6rem;
-    z-index: -1;
-    background-color: #fff;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-}
-
-.nav-menu ul{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.nav-menu ul li{
-    list-style: none;
-    padding: 0.4rem 0.15rem;
-    width: 100%;
-    text-align: center;
-}
-
-.nav-menu ul li:hover{
-    background-color: var(--hlgray);
-}
-
-.nav-menu ul li a{
-    width: 100%;
-    text-decoration: none;
+.book-search-form button:hover{
     color: black;
 }
 
+/* 정보 부분 */
+.user-info-section{
+    position: relative;
+}
 
-/* 책 관련 navbar */
-.book-info-nav{
+.user-profile{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: #Fff;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile i{
+    position: relative;
+    font-size: 28px;
+}
+
+.options{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 8rem;
+    background-color: #fff;
+    z-index: 10;
+    display: none;
+}
+
+.options li{
+    list-style:none;
+    border: 0.3px solid gray;
+}
+
+.options li a:hover{
+    background-color: rgba(0,0,0,0.03);
+}
+
+.options li a{
+    text-decoration: none;
+    color: black;
+    /* background-color: red; */
+    width: 100%;
+    display: block;
+    padding: 0.6rem 0.3rem;
+}
+
+/* 2번째 책 정보 nav */
+.nav-second{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.book-info-nav li{
+.nav-second li{
     list-style: none;
-    display: inline-block;
-    text-align: center;
     flex: 1;
-    border: 0.3px solid gray;
+    width: 100%;
+    text-align: center;
+    border-right: 0.2px solid rgba(0,0,0,0.3);
+    border-bottom: 0.2px solid rgba(0,0,0,0.3);
 }
 
-.book-info-nav li a{
-    text-decoration: none;
-    color: black;
+.nav-second li a:hover{
+    color: red;
+}
+
+.nav-second li a{
     width: 100%;
     display: inline-block;
-    padding: 0.3rem 0rem;
-}
-.book-info-nav li a:hover{
-    color: rgb(196, 78, 78);;
+    padding: 0.4rem 0rem;
+    text-decoration: none;
+    color: black;
 }

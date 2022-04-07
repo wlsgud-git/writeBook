@@ -23,7 +23,7 @@
                     <div class="img-box">
                     </div>
                 </div>
-                <form action="#" method="post" class="profile-image-form">
+                <form action="{% url 'common:userEdit' request.user.email %}" method="post" class="profile-image-form">
                     {% csrf_token%}
                     <label for="profile-image-change-btn">프로필 이미지 변경</label>
                     <input type="file" id="profile-image-change-btn" name="profile_image" id="profile_image" accept=".jpg, .jpge, .png, .ico">
@@ -31,7 +31,7 @@
                 </form>
             </div>
 
-            <form class="user-infomations" method="post" action="{% url 'common:userEdit'%}?u={{request.user.email}}">
+            <form class="user-infomations" method="post" action="{% url 'common:userEdit' request.user.email %}?u={{request.user.email}}">
                 {% csrf_token %}
                 <div class="profile-edit">
                     <label for="username">이름</label>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="profile-edit">
                     <label for="email">이메일</label>
-                    <input type="email" class="email-input">
+                    <input type="email" class="email-input" disabled>
                 </div>
                 <div class="profile-btn">
                     <button class="profile-save">저장</button>

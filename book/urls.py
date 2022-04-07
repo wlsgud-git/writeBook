@@ -12,8 +12,11 @@ urlpatterns = [
     path('commentlist-api/', comment_api.CommentsList.as_view()),
     path('<int:pk>/api/', comment_api.CommentDetail.as_view()),
     path('endbook-list/api/', book_api.EndBookList.as_view()),
+    path('topbook-list/api/', book_api.TopBookList.as_view()),
+    path('all-time-best-books/api/', book_api.AllTimeBestBook.as_view()),
     # base_views.py
     path('', base_views.index, name = 'index'),
+    path('practice/', base_views.practice, name='practice'),
     # book_veiws.py
     # book_another_views
     path('ending/', book_another_views.ending, name = "ending"),

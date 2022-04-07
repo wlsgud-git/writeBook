@@ -1,29 +1,18 @@
 //use selector
+const url = new URL(window.location)
+console.log(url.searchParams.get("search-value"))
 const Days = document.querySelectorAll('.days')
 const SlideLeft = document.querySelector('.slide-left')
 const SlideRight = document.querySelector('.slide-right')
-//start domain
+ 
+// 시작 함수
 function init(){
-    // 날짜마다 다른 책 리스트 보여주기
-    let dday = getToday()
-    history.replaceState({'day': dday}, '', `?day=${dday}`)
-    GetDayBook(dday)
+    getMostBook()
 }
+
 init()
 
-// 날짜마다 다른 책 리스트 보여주기
-Days.forEach((day)=>{
-    day.addEventListener('click',(e)=>{
-        e.preventDefault()
-        let dday = e.target.id
-        history.replaceState({'day': dday}, '', `?day=${dday}`)
-        GetDayBook(dday)
-    })
-})
-
-//요일에 맞는 책 리시트 불러오기
-async function GetDayBook(day){
-    const res = await fetch(`/book/day-of-book/api/?day=${day}`)
-    const data = await res.json()
-    console.log(data)
+async function getMostBook(){
+    const mostBook = await fetch(`/book/all-time-best-books/api/`)
+    
 }

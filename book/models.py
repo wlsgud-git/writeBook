@@ -21,7 +21,7 @@ class Books(models.Model):
     content = models.TextField()
     create_date = models.DateField()
     create_day_of_week =  models.CharField(max_length=3, choices=DAYS_OF_WEEK)
-    thumbnail = models.ImageField(blank= True, null = True)
+    thumbnail = models.ImageField(blank= True, null = True, upload_to= "images/")
     making = models.BooleanField(default=True)
 
     like_book = models.ManyToManyField(Users, related_name='book_like', blank=True)
@@ -32,3 +32,7 @@ class Comments(models.Model):
     content = models.TextField()
     create_date = models.DateField()
     like_comment = models.ManyToManyField(Users, related_name='comment_like', blank=True)
+
+
+class Slider(models.Model):
+    slide_image = models.ImageField(blank= True, null = True, upload_to= "images/")

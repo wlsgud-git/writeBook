@@ -7,10 +7,10 @@ from django.core.validators  import validate_email
 from django.core.exceptions  import ValidationError
 from django.contrib import auth 
 from rest_framework_jwt.settings import api_settings
+import jwt, datetime
+from writeBook.settings import SECRET_KEY, ALGORITHM
 
 # JWT 사용을 위한 설정
-JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER
-JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,17 +45,20 @@ class UserLoginSerializer(serializers.Serializer):
         password = data.get('password', None)
 
         user = auth.authenticate(email = email, password = password)
-
+        
         if user is None:
             return False
         try:
-            payload = JWT_PAYLOAD_HANDLER(user)
-            jwt_token = JWT_ENCODE_HANDLER(payload)
+            payload = {
+                'user_email': email,
+                'exp' : datetime.datetime.now() + datetime.timedelta(minutes=1),
+                'iat' : datetime.datetime.now()
+            }
+            jwt_token = jwt.encode(payload, SECRET_KEY,algorithms=["HS256"])
         except Users.DoesNotExist:
             raise serializers.ValidationError(
                 'user is fuck that'
             )
-        return{
-            'user':user,
-            'token': jwt_token
+        return {
+            "token": jwt_token
         }

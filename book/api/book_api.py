@@ -6,6 +6,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 
+# 슬라이드 이미지
+class SliderImageList(APIView):
+    def get(self, request, format = None):
+        slide_image = Slider.objects.order_by('id')
+        slider_image_serializer = SliderSerializer(slide_image, many = True)
+        return Response(slider_image_serializer.data)
+
 # 모든 책 리스트
 class BookList(APIView):
     def get(self, request, format = None):
@@ -58,5 +65,5 @@ class BookDetail(APIView):
 class AllTimeBestBook(APIView):
     def get(self, request, format = None):
         all_time_best_book = Books.objects.order_by('like_book')[:10]
-        serializer = BookSerializer(all_time_best_book)
-        return Response({"status": 200, 'data': serializer.data})
+        serializer = BookSerializer(all_time_best_book, many = True)
+        return Response(serializer.data)

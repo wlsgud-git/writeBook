@@ -15,8 +15,12 @@ class LoginApi(APIView):
         serializer = UserLoginSerializer(data = request.data)
 
         if serializer.is_valid():
-            res = JsonResponse({'status': 200})
-            res.set_cookie('access_token', serializer.validated_data['token'])
-            print(request.COOKIES)
+            jwt_token = serializer.validated_data['token']
+            res = Response()
+            res.set_cookie(key='jwt', value=jwt_token)
+            res.data = {
+                'jwt': jwt_token
+            }
             return res
         
+# class LogoutApi(APIView):

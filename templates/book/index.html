@@ -18,19 +18,9 @@
         <div class="slide-contents">
             
             <ul class="content-list">
-                <!-- <li> <img src="" alt=""> </li>
-                <li> <img src="" alt=""> </li>
-                <li> <img src="" alt=""> </li>
-                <li> <img src="" alt=""> </li>
-                <li> <img src="" alt=""> </li> -->
             </ul>
 
             <div class="slide-input">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
 
             <button class="slide-left"> < </button>
@@ -40,21 +30,25 @@
         <main class="book-section">
             <div class="day_of_book-list">
                 <ul class="week"> 
-                    <li class=""><a href="{% url 'book:index' %}?day=mon" class="days" id="mon">월</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=tue" class="days" id="tue">화</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=wed" class="days" id="wed">수</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=thu" class="days" id="thu">목</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=fri" class="days" id="fri">금</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=sat" class="days" id="sat">토</a></li>
-                    <li class=""><a href="{% url 'book:index' %}?day=sun" class="days" id="sun">일</a></li>
+                    <li class=""><a href="#day=mon" class="days" id="mon">월</a></li>
+                    <li class=""><a href="#day=tue" class="days" id="tue">화</a></li>
+                    <li class=""><a href="#day=wed" class="days" id="wed">수</a></li>
+                    <li class=""><a href="#day=thu" class="days" id="thu">목</a></li>
+                    <li class=""><a href="#day=fri" class="days" id="fri">금</a></li>
+                    <li class=""><a href="#day=sat" class="days" id="sat">토</a></li>
+                    <li class=""><a href="#day=sun" class="days" id="sun">일</a></li>
                 </ul>
             </div>
 
             <div class="most-list-book">
-                <ul class="sorting-mostList">
-                    <li class="best">인기순</li>
-                    <li class="all-time-best">역대인기순</li>
+                <ul class="best-text">
+                    <li class="best">역대 흥행작</li>
                 </ul>
+
+                <ul class="all-time-best-book-list">
+
+                </ul>
+
             </div>
         </main>
 

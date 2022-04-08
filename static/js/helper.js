@@ -7,14 +7,6 @@ const Menu = document.querySelector('.options')
 // check section
 console.log('haha')
 
-MyProfile.addEventListener('click', ()=>{
-    Menu.style.display = "block"
-})
-
-MyProfile.addEventListener('focusout',(e)=>{
-    Menu.style.display = ""
-})
-
 // menu 열었다 닫기
 
 //쿠키 함수

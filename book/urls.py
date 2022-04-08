@@ -14,6 +14,7 @@ urlpatterns = [
     path('endbook-list/api/', book_api.EndBookList.as_view()),
     path('topbook-list/api/', book_api.TopBookList.as_view()),
     path('all-time-best-books/api/', book_api.AllTimeBestBook.as_view()),
+    path('slide-image/api/', book_api.SliderImageList.as_view()),
     # base_views.py
     path('', base_views.index, name = 'index'),
     path('practice/', base_views.practice, name='practice'),

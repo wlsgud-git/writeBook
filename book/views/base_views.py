@@ -1,16 +1,15 @@
 from django.shortcuts import render
 from common.models import Users
-from ..models import Books
+from ..models import Books, Slider
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+import jwt, datetime
+from writeBook.settings import SECRET_KEY
 
-@csrf_exempt
 # @login_required(login_url="common:login")
 def index(request):
-    profile_image = request.user.profile_image
-    username = request.user.username
-    books = Books.objects.all()
-    return render(request, 'book/index.html', {'profile_image': profile_image, 'username':username, 'books':books})
+    user = jwt.decode(request.COOKIES['jwt'][2:-1], SECRET_KEY, algorithms=["HS256"])
+    return render(request, 'book/index.html')
 
 def practice(request):
     if request.method == "POST":

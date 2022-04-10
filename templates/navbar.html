@@ -18,7 +18,7 @@
 
             <div class="book-search-section">
                 <form action="{% url 'book:index' %}" method="get" class="book-search-form">
-                    <input type="text" name="search-value" placeholder="책 제목 검색">
+                    <input type="search" name="result" id="search-id" placeholder="책 제목 검색" class="search-input">
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                 </form>
             </div>

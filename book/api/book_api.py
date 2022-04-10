@@ -75,3 +75,7 @@ class AllTimeBestBook(APIView):
         all_time_best_book = Books.objects.order_by('like_book')[:10]
         serializer = BookSerializer(all_time_best_book, many = True)
         return Response(serializer.data)
+
+# class SearchBook(APIView):
+#     def get(self, request, format = None):
+#         search_value = 

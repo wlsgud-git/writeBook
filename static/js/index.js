@@ -7,8 +7,9 @@ const SlideRight = document.querySelector('.slide-right')
 
 var slideLength = 0
 var slideIndex = 0
+var slideNext = setInterval(slidePainter, 4000)
 // check console
-console.log('checking')
+console.log('check')
 
 // start function
 function init(){
@@ -43,11 +44,20 @@ async function GetSliderImage(){
         index.addEventListener('click',()=>{
             let indexNum = parseInt(index.id)
             slideIndex = indexNum
-            paintSlideInput()
+            clearInterval(slideNext)
             paintSlideImg()
+            paintSlideInput()
+            slideNext = setInterval(slidePainter, 3000)
         })
     })
 
+    paintSlideInput()
+    paintSlideImg()
+}
+
+function slidePainter(){
+    if(slideIndex == slideLength){slideIndex = 0}
+    else{slideIndex +=1}
     paintSlideInput()
     paintSlideImg()
 }
@@ -73,16 +83,19 @@ function paintSlideInput(){
 SlideLeft.addEventListener("click", ()=>{
     if(slideIndex == 0){slideIndex = slideLength}
     else{slideIndex-=1}
-    paintSlideInput()
+    clearInterval(slideNext)
     paintSlideImg()
+    paintSlideInput()
+    slideNext = setInterval(slidePainter, 3000)
 })
 
 SlideRight.addEventListener('click',()=>{
     if(slideIndex == slideLength){slideIndex = 0}
     else{slideIndex +=1}
-    paintSlideInput()
+    clearInterval(slideNext)
     paintSlideImg()
-    
+    paintSlideInput()
+    slideNext = setInterval(slidePainter, 3000)
 })
 
 

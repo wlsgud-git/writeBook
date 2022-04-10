@@ -19,6 +19,7 @@ urlpatterns = [
     path('', base_views.index, name = 'index'),
     path('practice/', base_views.practice, name='practice'),
     # book_veiws.py
+    path('result/', book_views.searchResult, name = 'searchResult'),
     # book_another_views
     path('ending/', book_another_views.ending, name = "ending"),
     path('top100/', book_another_views.TopBook, name = "topbook"),

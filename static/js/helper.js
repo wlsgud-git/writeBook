@@ -4,8 +4,16 @@ const Profile = document.querySelector('.user-profile')
 const Options = document.querySelector('.options')
 const MyProfile = document.querySelector('.user-profile')
 const Menu = document.querySelector('.options')
+const SearchForm = document.querySelector('.book-search-form')
+const SearchInput = document.querySelector('.search-input')
 // check section
-console.log('haha')
+console.log('ja')
+
+// 검색
+// SearchForm.addEventListener('submit', (e)=>{
+//     e.preventDefault()
+//     console.log(SearchInput.value)
+// })
 
 // menu 열었다 닫기
 

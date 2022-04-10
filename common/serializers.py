@@ -54,7 +54,7 @@ class UserLoginSerializer(serializers.Serializer):
                 'exp' : datetime.datetime.now() + datetime.timedelta(minutes=1),
                 'iat' : datetime.datetime.now()
             }
-            jwt_token = jwt.encode(payload, SECRET_KEY,algorithms=["HS256"])
+            jwt_token = jwt.encode(payload, SECRET_KEY, ALGORITHM)
         except Users.DoesNotExist:
             raise serializers.ValidationError(
                 'user is fuck that'

@@ -8,6 +8,7 @@
     width: 100%;
 }
 
+/* 슬라이드 부분 */
 .slide-contents{
     position: relative;
     width: 100%;
@@ -22,37 +23,55 @@
 .slide-input{
     position: absolute;
     z-index: 8;
-    bottom: 7%;
-    left: 45%;
+    bottom: 4%;
+    left: 50%;
     width: 100px;
     display: flex;
+    margin-left: -32px;
     justify-content: space-between;
-    border: 1px solid black;
 }
 
 .slide-input span{
-    border: 1px solid black;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     cursor: pointer;
+    border: 0.3px solid rgba(0,0,0,0.8);
 }
 
-.active{
-    background-color: red;
+.slide-left{
+    left: 3%;
 }
 
-.content-list{
-    width: 100%;
-    height: 100%;
+.slide-right{
+    right: 3%;
+}
+
+.input-active{
+    background-color: #e53643;
+}
+
+.slide-content-img{
     position: absolute;
-    display: flex;
-    align-items: center;
-}
-
-.content-list li{
+    top: 0;
+    left: 0;
+    z-index: 5;
     width: 100%;
     height: 100%;
+}
+
+.none{
+    display: none;
+}
+
+.slide-content-img img{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.img-active{
+    display: block;
 }
 
 .slide-contents button{
@@ -75,14 +94,7 @@
     opacity: 0.5;
 }
 
-.slide-left{
-    left: 3%;
-}
-
-.slide-right{
-    right: 3%;
-}
-
+/* 책 부분 */
 .book-section{
     position: relative;
     width: 100%;

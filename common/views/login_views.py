@@ -4,7 +4,6 @@ from common.models import Users
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-
 def login(request):
     print(request.COOKIES)
     return render(request, 'common/login.html')  

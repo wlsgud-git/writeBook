@@ -5,8 +5,11 @@ from ..models import *
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 # 슬라이드 이미지
+@permission_classes([AllowAny])
 class SliderImageList(APIView):
     def get(self, request, format = None):
         slide_image = Slider.objects.order_by('id')
@@ -14,6 +17,7 @@ class SliderImageList(APIView):
         return Response(slider_image_serializer.data)
 
 # 모든 책 리스트
+@permission_classes([AllowAny])
 class BookList(APIView):
     def get(self, request, format = None):
         books = Books.objects.order_by('id')
@@ -32,6 +36,7 @@ class BookList(APIView):
         return Response({'status':400, 'data':"no response error"})
 
 # 요일에 맞는 책
+@permission_classes([AllowAny])
 class DayOfBook(APIView):
     def get(self, request, format=None):
         param = request.GET.get('day')
@@ -40,6 +45,7 @@ class DayOfBook(APIView):
         return Response(book_serializer.data)
 
 # 완결난 책
+@permission_classes([AllowAny])
 class EndBookList(APIView):
     def get(self, request, format = None):
         books = Books.objects.filter(making = False).order_by("-id")[:3]
@@ -47,6 +53,7 @@ class EndBookList(APIView):
         return Response(books_serializer.data)
 
 # 인기 많은 책 100개
+@permission_classes([AllowAny])
 class TopBookList(APIView):
     def get(self, request, format = None):
         topbook = Books.objects.filter(making=  True).order_by('like_book')[:100]
@@ -62,6 +69,7 @@ class BookDetail(APIView):
         return Response({"status": 200, "data": serializer.data})
 
 # 역대 인기순 책
+@permission_classes([AllowAny])
 class AllTimeBestBook(APIView):
     def get(self, request, format = None):
         all_time_best_book = Books.objects.order_by('like_book')[:10]

@@ -59,4 +59,3 @@ function CountReduce(count){
 
 // use_variable
 const csrftoken = getCookie('csrftoken');
-const getDateCount = CountReduce(1000)

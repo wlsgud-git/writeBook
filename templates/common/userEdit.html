@@ -7,10 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/userEdit.css'%}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <title>Document</title>
 </head>
-<body>
-    
+<body>    
+
+    <nav class="nav">    
+        <div class="nav-first">
+
+            <span class="logo"><a href="{% url 'book:index'%}"> WB <i class="fa fa-book"></i> </a></span>
+
+            <div class="user-info-section">
+                <button class="user-profile">
+                    <i class="fa fa-user"></i>
+                </button>
+
+                <ul class="options">
+                    <li><a href="#"><i class="fa fa-power-off"></i> 로그아웃 </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="user-page-box">
+        <section class="user-infoamtion-box">
+
+            <div class="user-avatar">
+                <form action="#" method="post">
+                    {% csrf_token %}
+
+                </form>
+            </div>
+
+            <div class="user-username">
+
+            </div>
+
+            
+
+        </section>
+    </div>
 
     <script src="{% static 'js/useredit.js' %}"></script>
     <script src="{% static 'js/helper.js'%}"></script>

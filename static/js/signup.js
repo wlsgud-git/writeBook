@@ -1,17 +1,26 @@
+//use selector
+const url = new URL(window.location)
 const form = document.querySelector('.signup-form')
 const Email = document.querySelector('.email');
 const Username = document.querySelector('.username');
 const Nickname =  document.querySelector('.nickname')
 const Password =  document.querySelector('.password')
 
-console.log('fatch as')
+//check console
+console.log('loser')
 
-form.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    Postsignup(Email.value, Username.value, Nickname.value, Password.value)
-})
+// start function 
+function init(){
+    form.addEventListener('submit', (e)=>{
+        e.preventDefault()
+        Postsignup(Email.value, Username.value, Nickname.value, Password.value)
+    })
+}
+
+init()
 
 async function Postsignup(email, username, nickname, password){
+
     let info = {
         'email': email,
         'username': username,
@@ -28,9 +37,17 @@ async function Postsignup(email, username, nickname, password){
         }
     })
     const data = await res.json()
-    console.log(data, "fuck that")
+    handleSigupData(data)
 }
 
-function init(){
-
+function handleSigupData(data){
+    console.log(data)
+    if(data.status == 200){
+        alert('회원가입이 완료되었습니다')
+        return window.location.href = url.origin+data.pathname
+    }
+    else{
+        alert(data.message)
+        return
+    }
 }

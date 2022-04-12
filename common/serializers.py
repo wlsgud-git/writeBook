@@ -9,14 +9,14 @@ from django.contrib import auth
 from rest_framework_jwt.settings import api_settings
 import jwt, datetime
 from writeBook.settings import SECRET_KEY, ALGORITHM
-
-# JWT 사용을 위한 설정
+from helper import pwValidate
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = ['username', 'nickname', 'email']
 
+# 유저 등록
 class ResisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length= 200, validators=[UniqueValidator(queryset=Users.objects.all())])
     password = serializers.CharField(max_length = 30, write_only= True)
@@ -25,6 +25,12 @@ class ResisterSerializer(serializers.ModelSerializer):
         model = Users
         fields = ['username', 'nickname','email', 'password']
 
+    def validate(self, attrs):
+        if pwValidate(attrs['password'].lower()) == False:
+            raise serializers.ValidationError('password so short')
+
+        return attrs
+    
     def create(self, validated_data):
         user = Users.objects.create(
             username = validated_data['username'],
@@ -36,6 +42,7 @@ class ResisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+# 유저 로그인
 class UserLoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=64)
     password = serializers.CharField(max_length=128, write_only=True)

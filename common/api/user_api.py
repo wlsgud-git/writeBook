@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 class UserList(APIView):
     def get(self, request, format=None):
@@ -12,6 +14,7 @@ class UserList(APIView):
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+@permission_classes([AllowAny])
 class UserDetail(APIView):
     def get_object(self, email):
         try:
@@ -22,7 +25,7 @@ class UserDetail(APIView):
     def get(self, request, email,format=None):
         user = self.get_object(email)
         serializer = UserSerializer(user)
-        return Response(serializer.data, status= status.HTTP_200_OK)
+        return Response({"user":serializer.data})
     
     def put(self, request, email, format=None):
         user = self.get_object(email)

@@ -16,6 +16,9 @@ console.log('ja')
 // })
 
 // menu 열었다 닫기
+// function 
+
+
 
 //쿠키 함수
 function getCookie(name) {
@@ -32,10 +35,6 @@ function getCookie(name) {
         }
     }
     return cookieValue;
-}
-// 메뉴 넣다빼기
-function Togglemenu(){
-    userMenu.classList.toggle('none')
 }
 
 //요일 받아오는 함수

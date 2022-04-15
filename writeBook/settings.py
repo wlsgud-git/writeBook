@@ -64,23 +64,15 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ), 
 }
 
-ALGORITHM = 'HS256'
-
 # JWT toekn
-JWT_AUTH = {
-    'JWT_SECRET_KEY': get_secret("SECRET_KEY"),
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=5),
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
-}
-
+JWT_ALGORITHM = 'HS256'
 REST_USE_JWT = True
 
+# MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

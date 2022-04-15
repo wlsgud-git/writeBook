@@ -3,7 +3,20 @@ const LoginForm = document.querySelector('.login-form')
 const Email = document.querySelector('.email')
 const Password = document.querySelector('.password')
 // check reset
-console.log('jeus')
+console.log('11a')
+
+function handleLoginData(data){
+    console.log(data)
+    // if(data.status == 200){
+    //     localStorage.setItem('access_token', data.access_token)
+    //     alert(data.message)
+    //     return
+    // }
+    // else{
+    //     alert(data.message)
+    //     return
+    // }
+}
 
 async function GetLoginInfo(email, password){
     let loginfo = {
@@ -19,7 +32,7 @@ async function GetLoginInfo(email, password){
         } 
     })
     const data = await res.json()
-    console.log(data)
+    handleLoginData(data)
 }
 
 function init(){

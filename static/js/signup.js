@@ -1,5 +1,4 @@
 //use selector
-const url = new URL(window.location)
 const form = document.querySelector('.signup-form')
 const Email = document.querySelector('.email');
 const Username = document.querySelector('.username');
@@ -8,7 +7,6 @@ const Password =  document.querySelector('.password')
 
 //check console
 console.log('loser')
-
 // start function 
 function init(){
     form.addEventListener('submit', (e)=>{
@@ -44,7 +42,7 @@ function handleSigupData(data){
     console.log(data)
     if(data.status == 200){
         alert('회원가입이 완료되었습니다')
-        return window.location.href = url.origin+data.pathname
+        return window.location.href = url.origin+data.url
     }
     else{
         alert(data.message)

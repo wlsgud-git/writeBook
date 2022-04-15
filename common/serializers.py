@@ -6,9 +6,8 @@ from rest_framework.validators import UniqueValidator
 from django.core.validators  import validate_email
 from django.core.exceptions  import ValidationError
 from django.contrib import auth 
-from rest_framework_jwt.settings import api_settings
-import jwt, datetime
-from writeBook.settings import SECRET_KEY, ALGORITHM
+import bcrypt
+from .token import *
 from helper import pwValidate
 
 class UserSerializer(serializers.ModelSerializer):
@@ -37,8 +36,9 @@ class ResisterSerializer(serializers.ModelSerializer):
             email = validated_data['email'],
             nickname = validated_data['nickname'],
         )
+        password = validated_data['password']
 
-        user.set_password(validated_data['password'])
+        user.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         user.save()
         return user
 
@@ -51,21 +51,22 @@ class UserLoginSerializer(serializers.Serializer):
         email = data.get('email', None)
         password = data.get('password', None)
 
-        user = auth.authenticate(email = email, password = password)
-        
-        if user is None:
-            return False
         try:
-            payload = {
-                'user_email': email,
-                'exp' : datetime.datetime.now() + datetime.timedelta(minutes=1),
-                'iat' : datetime.datetime.now()
-            }
-            jwt_token = jwt.encode(payload, SECRET_KEY, ALGORITHM)
+            user = Users.objects.get(email = email)
+            db_user_pw = user.password
         except Users.DoesNotExist:
-            raise serializers.ValidationError(
-                'user is fuck that'
-            )
-        return {
-            "token": jwt_token
-        }
+            raise serializers.ValidationError("no exist user")
+
+        if bcrypt.checkpw(password.encode('utf-8'), db_user_pw.encode("utf-8")):
+            payload = {
+                "email": user.email,
+                'admin': user.is_staff
+            }
+
+            access_token = create_access_token(payload)
+            refresh_token = create_refresh_token(payload)
+
+            return {'access_token': access_token, 'refresh_token': refresh_token}
+            
+        raise serializers.ValidationError('no exist user')
+     

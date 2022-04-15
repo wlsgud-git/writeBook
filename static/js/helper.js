@@ -1,4 +1,5 @@
 //use selector
+const url = new URL(window.location)
 const userMenu = document.querySelector('.nav-menu')
 const Profile = document.querySelector('.user-profile')
 const Options = document.querySelector('.options')
@@ -8,6 +9,7 @@ const SearchForm = document.querySelector('.book-search-form')
 const SearchInput = document.querySelector('.search-input')
 // check section
 console.log('ja')
+// console.log(url)
 
 // 검색
 // SearchForm.addEventListener('submit', (e)=>{

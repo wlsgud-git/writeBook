@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/api/', login_api.LoginApi.as_view()),
     path('<str:email>/api/', user_api.UserDetail.as_view()),
     path('resister/', signup_api.ResisterApi.as_view()),
+    path('access_token/verify/', login_api.AccessTokenVeridate.as_view()),
     # login
     path('login/', login_views.login, name = "login"),
     # signup

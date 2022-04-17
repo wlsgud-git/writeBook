@@ -3,19 +3,19 @@ const LoginForm = document.querySelector('.login-form')
 const Email = document.querySelector('.email')
 const Password = document.querySelector('.password')
 // check reset
-console.log('11a')
+console.log('101')
 
 function handleLoginData(data){
-    console.log(data)
-    // if(data.status == 200){
-    //     localStorage.setItem('access_token', data.access_token)
-    //     alert(data.message)
-    //     return
-    // }
-    // else{
-    //     alert(data.message)
-    //     return
-    // }
+    if(data.status == 200){
+        localStorage.setItem('access_token', data.access_token)
+        window.location.href = url.origin+data.url
+        alert(data.message)
+        return
+    }
+    else{
+        alert(data.message)
+        return
+    }
 }
 
 async function GetLoginInfo(email, password){

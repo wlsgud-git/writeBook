@@ -58,13 +58,9 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("no exist user")
 
         if bcrypt.checkpw(password.encode('utf-8'), db_user_pw.encode("utf-8")):
-            payload = {
-                "email": user.email,
-                'admin': user.is_staff
-            }
 
-            access_token = create_access_token(payload)
-            refresh_token = create_refresh_token(payload)
+            access_token = create_access_token(user.email, user.is_staff)
+            refresh_token = create_refresh_token(user.email, user.is_staff)
 
             return {'access_token': access_token, 'refresh_token': refresh_token}
             

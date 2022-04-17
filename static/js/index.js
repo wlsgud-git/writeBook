@@ -8,7 +8,7 @@ var slideIndex = 0
 var slideNext = setInterval(slidePainter, 4000)
 
 // check console
-console.log('checking')
+console.log('web')
 
 // start function
 function init(){
@@ -20,16 +20,14 @@ function init(){
 init()
 // 유저 정보 받아오기
 async function GetUserInfo(){
-    const user = await fetch('/book/',{
-        method: 'post',
-        headers:{
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-            'Authorization' : localStorage.getItem("access_token")
+    const user = await fetch('/common/access_token/verify/', {
+        method: 'get',
+        headers: {
+            'Authorization': localStorage.getItem('access_token')
         }
     })
     const data = await user.json()
-    console.log(data)
+    console.log(data, 'dd')
 }
 
 ////////// 슬라이드 //////////////

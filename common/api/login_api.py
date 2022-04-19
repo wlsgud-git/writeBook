@@ -15,17 +15,17 @@ from rest_framework.decorators import permission_classes, authentication_classes
 class LoginApi(APIView):
     def post(self, request, format=None):
         serializer = UserLoginSerializer(data = request.data)
-        error = {"status": 400}
+        res = Response()
         if serializer.is_valid():
-            access_token = serializer.validated_data['access_token']
-            refresh_token = serializer.validated_data['refresh_token']
-
-            res = Response()
-            res.set_cookie(key='refresh_token', value=refresh_token, httponly=True)
-            res.data = {'status': 200, 'message':"로그인이 완료되었습니다", 'access_token':access_token, "url": '/book'}
-            return res
-        error['message'] = '로그인 정보가 시스템에 있는 정보와 맞지 않습니다'
-        return Response(error)
+            res.data = {
+                'status': serializer.validated_data['status'],
+                'message': serializer.validated_data['message'],
+                'access_token': serializer.validated_data['access_token'],
+                'refresh_token': serializer.validated_data['refresh_token'],
+                'url': serializer.validated_data['url']
+            }
+            
+        return res
 
 @permission_classes([AllowAny])
 class AccessTokenVeridate(APIView):
@@ -45,10 +45,5 @@ class AccessTokenVeridate(APIView):
                     return Response({'status':200, 'message': '새 토큰을 발급합니다.', 'access_token': access_tokens})
         
         return Response({'status':500, 'message': "로그인이 필요합니다", 'url':"/common/login/"})
-
-
-# @permission_classes([AllowAny])
-# class RefleshTokenveridate(APIView):
-#     def post(self, request, formant = None):
 
 # class LogoutApi(APIView):

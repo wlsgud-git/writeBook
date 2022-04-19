@@ -147,3 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default_auto-fiel
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# SEND EMAIL
+EMAIL = get_secret("EMAIL")

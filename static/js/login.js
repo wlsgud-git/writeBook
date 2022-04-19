@@ -3,9 +3,10 @@ const LoginForm = document.querySelector('.login-form')
 const Email = document.querySelector('.email')
 const Password = document.querySelector('.password')
 // check reset
-console.log('101')
+console.log('100')
 
 function handleLoginData(data){
+    console.log(data)
     if(data.status == 200){
         localStorage.setItem('access_token', data.access_token)
         window.location.href = url.origin+data.url
@@ -13,6 +14,7 @@ function handleLoginData(data){
         return
     }
     else{
+        Password.value = ""
         alert(data.message)
         return
     }

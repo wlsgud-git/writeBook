@@ -7,6 +7,9 @@ app_name = "book"
 urlpatterns = [
     # api
     path('slide-image/api/', book_api.SliderImageList.as_view()),
+    path('endbook-list/api/', book_api.endBookList.as_view()),
+    path('topbook-list/api/', book_api.TopBookList.as_view()),
+    path('alltime-bestbook-list/api/', book_api.AllBestBook.as_view()),
     # base_views.py
     path('', base_views.index, name = 'index'),
     # book_veiws.py

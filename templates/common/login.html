@@ -11,6 +11,23 @@
 </head>
 <body>
 
+    <div class="modals">
+        <div class="modal">
+            <span class="modal-close">X</span>
+
+            <div class="modal-content">
+                <div class="modal-user-email">fcripas8694@naver.com의 이메일로 인증번호가 발송 되었습니다.</div>
+                <div class="status-mes"></div>
+                <form action="#dasd" method="post" class="auth-number-form">
+                    {%csrf_token%}
+                    <input type="text" class="auth-number-input" placeholder="인증번호">
+                    <button class="auth-btn">인증하기</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
     <div class="login-box">
         <div class="title-logo">
             Write Book

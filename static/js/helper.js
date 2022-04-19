@@ -7,8 +7,25 @@ const MyProfile = document.querySelector('.user-profile')
 const Menu = document.querySelector('.options')
 const SearchForm = document.querySelector('.book-search-form')
 const SearchInput = document.querySelector('.search-input')
+//모달 관련 selector
+const Modals = document.querySelector('.modals')
+const Modal = document.querySelector('.modal')
+const ModalX = document.querySelector('.modal-close')
+const ModalForm = document.querySelector('.auth-number-form')
+const ModalInput = document.querySelector('.auth-number-input')
+const ModalStatus = document.querySelector('.status-mes')
+
 // check section
-console.log('ja')
+console.log('ㅁ')
+
+function countDown(minutes){
+    
+}
+
+// ModalX.addEventListener('click', ()=>{
+//     Modals.classList.add("none")
+// })
+
 // console.log(url)
 
 // 검색

@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from attr import field
 from rest_framework import serializers
+from sqlalchemy import null
 from .models import Users
 from rest_framework.validators import UniqueValidator
 from django.core.validators  import validate_email
@@ -39,6 +40,7 @@ class ResisterSerializer(serializers.ModelSerializer):
         password = validated_data['password']
 
         user.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        user.is_active = False
         user.save()
         return user
 
@@ -55,14 +57,14 @@ class UserLoginSerializer(serializers.Serializer):
             user = Users.objects.get(email = email)
             db_user_pw = user.password
         except Users.DoesNotExist:
-            raise serializers.ValidationError("no exist user")
+            return {'status':400, 'message': "존재하지 않는 유저입니다", 'access_token': "null", 'refresh_token': "null", 'url': 'null'}
 
         if bcrypt.checkpw(password.encode('utf-8'), db_user_pw.encode("utf-8")):
 
             access_token = create_access_token(user.email, user.is_staff)
             refresh_token = create_refresh_token(user.email, user.is_staff)
 
-            return {'access_token': access_token, 'refresh_token': refresh_token}
+            return {'status':200, 'message': "login success", 'access_token': access_token, 'refresh_token': refresh_token, 'url': '/book'}
             
-        raise serializers.ValidationError('no exist user')
+        return {'status':400, 'message': "존재하지 않는 유저입니다", 'access_token': "null", 'refresh_token': 'null', 'url': 'null'}
      

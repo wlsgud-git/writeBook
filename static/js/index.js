@@ -15,7 +15,7 @@ function init(){
     GetSliderImage()
     GetUserInfo()
     // GetDayOFBook()
-    // GetMostPopularBook()
+    GetMostPopularBook()
 }
 init()
 // 유저 정보 받아오기
@@ -118,7 +118,11 @@ SlideRight.addEventListener('click',()=>{
 
 
 //역대 가장 인기있는 책 리스트 받아오기
-
+async function GetMostPopularBook(){
+    const allTimeBestBook = await fetch(`/book/alltime-bestbook-list/api/`)
+    const data = await allTimeBestBook.json()
+    console.log(data)
+}
 
 
 

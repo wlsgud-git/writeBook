@@ -14,6 +14,7 @@
     --hblue: #0367fc;
     --cover-gray: #f9fafb;
     --lblue: #0095f6;
+    --nomar-gray: #c92317f1;
 }
 
 /* 기본 navbar */
@@ -159,4 +160,65 @@
     padding: 0.4rem 0rem;
     text-decoration: none;
     color: black;
+}
+
+.modals{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.3);
+} 
+
+.modal{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width:405px;
+    height: 300px;
+    margin-left: -200px;
+    margin-top: -170px;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 0.5rem 0.8rem;
+}
+
+.modal-close{
+    color: red;
+    display: flex;
+    font-weight: bolder;
+    cursor: pointer;
+    justify-content: end;
+}
+
+.modal-user-email{
+    text-align: center;
+    margin: 1rem 0rem;
+}
+
+.status-mes{
+    min-height: 6px;
+    /* border: 1px solid black; */
+    margin-bottom: 0.4rem;
+}
+
+.auth-number-form{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-number-form input{
+    outline: none;
+    padding: 0.5rem 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.auth-number-form button{
+    border: none;
+    background: var(--blue);
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 0.5rem 0rem;
 }

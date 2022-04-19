@@ -12,7 +12,7 @@
 .slide-contents{
     position: relative;
     width: 100%;
-    height: 68vh;
+    height: 74vh;
 }
 
 .slide-contents img{
@@ -154,4 +154,89 @@
 .best-text li{
     list-style: none;
     padding: 0.3rem 0rem;
+}
+
+
+
+
+
+.day_of_book_list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    border: 1px solid blue;
+}
+
+/* 책 관련 css */
+.book{
+    list-style: none;
+    width: 140px;
+    height: 160px;
+    border: 1px solid black;
+    margin: 1rem 0.7rem 0.5rem 0.7rem;
+}
+.book-image{
+    width: 100%;
+    height: 110px;
+}
+.book a{
+    text-decoration: none;
+    color: black;
+}
+.book-image img{
+    width: 100%;
+    height: 100%;
+}
+.perbook-info{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.2rem 0.3rem;
+}
+.book-subinfo .author-nickname{
+    font-size: 13px;
+    color: #606060
+}
+.book-subinfo .book-like{
+    margin: 0.5rem;
+    font-size: 13px;
+}
+
+/* best책 관련 css */
+.best-book{
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid black;
+    list-style: none;
+}
+
+.best-book a{
+    width: 100%;
+    height: 100%;
+    color: black;
+    display: flex;
+    text-decoration: none;
+}
+
+.best-book-image{
+    width: 90px;
+    height: 100%;
+}
+.best-book-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.best-book-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.4rem 0.5rem;
+    flex: 1;
+}
+
+.best-book-author{
+    font-size: 13px;
+    color: #606060;
+
 }
